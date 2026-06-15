@@ -60,7 +60,7 @@ User Input
    │                  └── Persistent Memory (ZELOS_MEMORIES via SQLite)
    │
    ▼
-[Validator.py]    ──> Schema Check (Draft 2020-12)
+[Validator.py]    ──> Schema Check
    │                  │
    │                  ├── [Pass] ──> Token Optimization (token_counter.py)
    │                  └── [Fail] ──> Hard Fallback/Crash Prevention
