@@ -1,1 +1,31 @@
-{"$schema": "https://json-schema.org", "title": "ZelosContextRules", "type": "object", "required": ["active_application", "layout_mode", "focus_modifier"], "properties": {"active_application": {"type": "string", "enum": ["apple_mail", "apple_notes"]}, "layout_mode": {"type": "string", "enum": ["concise_paragraphs", "raw_fragments"]}, "focus_modifier": {"type": "string"}}}
+{
+  "$schema": "https://json-schema.org",
+  "title": "ZelosContextRules",
+  "type": "object",
+  "required": ["profile_archetype", "environments"],
+  "properties": {
+    "profile_archetype": { "type": "string" },
+    "environments": {
+      "type": "object",
+      "required": ["standalone", "apple_mail", "apple_notes"],
+      "properties": {
+        "standalone": { "$ref": "#/$defs/env_rules" },
+        "apple_mail": { "$ref": "#/$defs/env_rules" },
+        "apple_notes": { "$ref": "#/$defs/env_rules" }
+      }
+    }
+  },
+  "$defs": {
+    "env_rules": {
+      "type": "object",
+      "required": ["layout_mode", "focus_modifier"],
+      "properties": {
+        "layout_mode": { 
+          "type": "string",
+          "enum": ["pure_minimalism", "concise_paragraphs", "raw_fragments"]
+        },
+        "focus_modifier": { "type": "string" }
+      }
+    }
+  }
+}

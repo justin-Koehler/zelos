@@ -2,40 +2,40 @@
   "$schema": "https://json-schema.org",
   "title": "ZelosPersonaTraits",
   "type": "object",
-  "required": ["identity", "linguistic_style", "behavioral_boundaries"],
+  "required": ["identity", "ocean_matrix", "linguistic_style", "behavioral_boundaries"],
   "properties": {
     "identity": {
       "type": "object",
-      "required": ["name", "core_role", "analytical_depth"],
+      "required": ["name", "core_role"],
       "properties": {
         "name": { "type": "string" },
-        "core_role": { "type": "string" },
-        "analytical_depth": { 
-          "type": "string", 
-          "enum": ["high", "medium", "concise"] 
-        }
+        "core_role": { "type": "string" }
+      }
+    },
+    "ocean_matrix": {
+      "type": "object",
+      "required": ["openness", "conscientiousness", "extraversion", "agreeableness", "mood_volatility"],
+      "properties": {
+        "openness": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "conscientiousness": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "extraversion": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "agreeableness": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "mood_volatility": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
       }
     },
     "linguistic_style": {
       "type": "object",
-      "required": ["tone_of_voice", "sentence_structure", "allowed_jargon"],
+      "required": ["tone_of_voice", "allowed_jargon"],
       "properties": {
         "tone_of_voice": { "type": "string" },
-        "sentence_structure": { "type": "string" },
-        "allowed_jargon": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
+        "allowed_jargon": { "type": "array", "items": { "type": "string" } }
       }
     },
     "behavioral_boundaries": {
       "type": "object",
       "required": ["prohibited_phrases", "fallback_strategy"],
       "properties": {
-        "prohibited_phrases": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
+        "prohibited_phrases": { "type": "array", "items": { "type": "string" } },
         "fallback_strategy": { "type": "string" }
       }
     }
